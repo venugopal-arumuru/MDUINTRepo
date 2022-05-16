@@ -3,6 +3,7 @@ package coms.SpringBootWithJdbcApp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +27,23 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<Customer> ShowAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "Select * from customer";		
+		List<Customer>  cusinfo = jt.query(sql, new BeanPropertyRowMapper(Customer.class));
+		return cusinfo;
 	}
 
 	@Override
 	public Customer SearchCustomer(int cno) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql ="Select * from customer where cusid=?";
+		Customer customer = null;
+		try
+		{
+			customer = (Customer)jt.queryForObject(sql, new Object[] {cno}, new BeanPropertyRowMapper(Customer.class));
+		}
+		catch(Exception ex)
+		{
+			customer = null;
+		}
+		return customer;
 	}
-
 }

@@ -1,5 +1,7 @@
 package coms.SpringBootWithJdbcApp.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,5 +44,33 @@ public class CustomerController {
 		m.addAttribute("res", res);
 		
 		return "AddNewCustomer";
+	}
+	
+	@GetMapping("showall")
+	public String GetAllCustomer(Model m)
+	{
+		List<Customer>  allcustomers = cs.ShowAll();
+		m.addAttribute("allcus", allcustomers);
+		return "ViewAllCustomers";
+	}
+	
+	@GetMapping("getcus")
+	public String GetCustomer()
+	{		
+		return "SearchCustomer";
+	}
+	
+	@PostMapping("SearchProcess")
+	public String GetCustomer(@RequestParam String txtCusID, Model m)
+	{
+		int cno = Integer.parseInt(txtCusID);
+		Customer customer =  cs.SearchCustomer(cno);
+		
+		if(customer!=null)
+			m.addAttribute("cust", customer);
+		else
+			m.addAttribute("msg", "Customer Not Found");
+		
+		return "SearchCustomer";
 	}
 }
