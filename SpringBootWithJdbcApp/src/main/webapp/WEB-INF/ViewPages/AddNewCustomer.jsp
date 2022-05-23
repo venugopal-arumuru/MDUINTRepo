@@ -6,62 +6,53 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
-	table{
-		margin-left: auto;
-		margin-right: auto;
-	}
-</style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </head>
-<body>
-<h1 style="text-align:center">Add New Customer</h1>
-<hr />
+<body class="bg-info">
+
 <form name="f1"  method="POST"  action="addcustomer">
-<table width="40%" border=1>
-	<tr>
-	<td>Customer Name :</td>
-	<td><input type="text"  name="txtCname" required /></td>
-	</tr>
-
-	<tr>
-	<td>Gender :</td>
-	<td><input type="radio"  name="rdoGender" value="Male" />Male
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+	<div class="card">
+		<div class="card-header">Add New Customer</div>
+	</div>
+	<div class="card-body">
+	<label>Customer Name</label>
+	<input type="text"  name="txtCname" class="form-control" required />
+	
+	<label>Gender</label><br />
+	<input type="radio"  class="form-check-input" name="rdoGender" value="Male" />Male
 	<br />
-	<input type="radio"  name="rdoGender" value="Female" />Female</td>
-	</tr>
-
-	<tr>
-	<td>Location :</td>
-	<td>
-		<select name="ddlLoc">
+	<input type="radio" class="form-check-input"  name="rdoGender" value="Female" />Female
+	<br />
+	<label>Location</label>
+	<select name="ddlLoc" class="form-control">
 			<option value="Hyderabad">Hyderabad</option>		
 			<option value="Bangalore">Bangalore</option>
 			<option value="Mumbai">Mumbai</option>
 		</select>
-	</td>
-	</tr>
-	
-	<tr>
-	<td>Email :</td>
-	<td><input type="email"  name="txtEmail" required /></td>
-	</tr>
-	
-	<tr>
-	<td>Password :</td>
-	<td><input type="text"  name="txtPass" required /></td>
-	</tr>
-	
-	<tr>
-	<td>
-		<input type="submit"  value="Add Customer" />
-	</td>
-	<td><input type="reset"  value="Clear All" /></td>
-	</tr>
-	
-	<tr>
-	<td colspan="2"><h2>${res }</h2></td>	
-	</tr>
-</table>
+		<label>Email</label>
+		<input type="email"  name="txtEmail" class="form-control" required />
+		<label>Password</label>
+		<input type="text"  name="txtPass" class="form-control" required />
+		<div class="row">
+               <div class="col-md-12" style="text-align: center;">
+                         <br />
+                 <input type="submit"  value="Login" class="btn btn-primary" />
+                                <input type="reset"  value="Clear All" class="btn btn-danger" />
+                            </div>
+         </div>
+	</div>
+</div>
+<div class="col-md-3"></div>
+</div>
+</div>
+
 </form>
 </body>
 </html>
